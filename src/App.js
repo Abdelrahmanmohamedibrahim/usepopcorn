@@ -182,7 +182,7 @@ function MovieList({ movies, onSelectId, onDeleteWatched }) {
   return (
     <ul className="list list-movies">
       {movies?.map((movie) => (
-        <Movies movie={movie} onSelectId={onSelectId} />
+        <Movies movie={movie} onSelectId={onSelectId} key={movie.imdbID} />
       ))}
     </ul>
   );
@@ -215,7 +215,7 @@ function MovieDetail({
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
-  console.log(isWatched);
+
   const {
     Title: title,
     Year: year,
@@ -242,7 +242,6 @@ function MovieDetail({
     };
     onWatchedMovie(newMovie);
     onCloseMovie();
-    console.log(runtime);
   }
 
   useEffect(
@@ -366,7 +365,11 @@ function WatchedMovieList({ watched, onDeleteWatched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovie movie={movie} onDeleteWatched={onDeleteWatched} />
+        <WatchedMovie
+          movie={movie}
+          onDeleteWatched={onDeleteWatched}
+          key={movie.imdbID}
+        />
       ))}
     </ul>
   );
