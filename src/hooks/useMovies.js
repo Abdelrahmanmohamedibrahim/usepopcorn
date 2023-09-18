@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const KEY = "f84fc31d";
+const KEY = "dfcd9aa1";
 
 export function useMovies(query) {
   const [movies, setMovies] = useState([]);
@@ -33,7 +33,6 @@ export function useMovies(query) {
           setError("");
         } catch (err) {
           if (err.name !== "AbortError") {
-            console.log(err.message);
             setError(err.message);
           }
         } finally {
